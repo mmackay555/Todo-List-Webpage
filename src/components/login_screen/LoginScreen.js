@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-
 import { loginHandler } from '../../store/database/asynchHandler'
-import TestTodoListData from '../../test/TestTodoListData.json'
 
 class LoginScreen extends Component {
   state = {
