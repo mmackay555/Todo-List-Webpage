@@ -50,6 +50,15 @@ export const changeOwnerHandler = (id, firebase, todoList) => (getState, { getFi
     items: todoList.items
   });
 };
+export const changeItemHandler = (id, firebase, items, todoList) => (getState) => {
+  const firestore = firebase.firestore();
+  const collection = firestore.collection('todoLists').doc(id);
+  collection.set({
+    name: todoList.name,
+    owner: todoList.owner,
+    items: items
+  });
+};
 export const registerHandler = (newUser, firebase) => (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     firebase.auth().createUserWithEmailAndPassword(

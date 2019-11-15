@@ -11,6 +11,8 @@ import HomeScreen from './components/home_screen/HomeScreen.js';
 import ListScreen from './components/list_screen/ListScreen.js';
 import DatabaseTester from './test/DatabaseTester';
 import NewListScreen from './components/new_list_screen/NewListScreen.js';
+import ItemScreen from './components/item_screen/ItemScreen.js';
+import NewItemScreen from './components/item_screen/NewItemScreen.js';
 
 class App extends Component {
   render() {
@@ -28,6 +30,8 @@ class App extends Component {
               <Route path="/databaseTester" component={DatabaseTester}/>
               <Route path="/register" component={RegisterScreen} />
               <Route path="/login" component={LoginScreen} />
+              <Route path="/todoList/:id/new_item" component={NewItemScreen} />
+              <Route path="/todoList/:id/item/:id" component={ItemScreen} />
               <Route path="/todoList/:id" component={ListScreen} />
               <Route path="/new_list" component={NewListScreen} />
               <Route path="/:any" component={HomeScreen} />
