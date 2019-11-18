@@ -24,7 +24,7 @@ export const newListHandler = (todoList, firebase) => (dispatch, getState, { get
   firestore.collection('todoLists').add({
     name: todoList.name,
     owner: todoList.owner,
-    items: [],
+    items: []
   }).then(() => {
     dispatch(actionCreators.createTodoList);
   }).catch((err) => {
@@ -58,6 +58,11 @@ export const changeItemHandler = (id, firebase, items, todoList) => (getState) =
     owner: todoList.owner,
     items: items
   });
+};
+export const deleteListHandler = (id, firebase) => (getState) => {
+  const firestore = firebase.firestore();
+  const collection = firestore.collection('todoLists').doc(id);
+  collection.delete();
 };
 export const registerHandler = (newUser, firebase) => (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();

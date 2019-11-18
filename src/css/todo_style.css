@@ -31,7 +31,14 @@ div.banner {
   padding-top: 5%;
   padding-bottom: 5%;
 }
-
+#fab_up_down_delete{
+  display: inline-block;
+  position: absolute;
+  z-index: 10;
+}
+.button_holder{
+  text-align: center;
+}
 .home_new_list_button {
   font-size: 32pt;
 }

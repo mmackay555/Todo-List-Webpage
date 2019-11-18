@@ -28,7 +28,7 @@ class NewListScreen extends Component{
         });
     }
     render() {
-        if (this.state.completed) {
+        if (this.state.completed || !this.props.auth.uid) {
           return <Redirect to="/" />;
         } 
     return (

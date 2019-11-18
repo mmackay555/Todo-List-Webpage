@@ -28,7 +28,7 @@ class HomeScreen extends Component {
                         </div>
                         
                         <div className="home_new_list_container">
-                                <NavLink to="/new_list" className="home_new_list_button" type="button" onClick={this.handleNewList}>
+                                <NavLink to="/new_list" className="btn teal lighten-1 z-depth-0" type="button" onClick={this.handleNewList}>
                                     Create a New To Do List
                                 </NavLink>
                         </div>
