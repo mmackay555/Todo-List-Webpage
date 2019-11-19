@@ -9,6 +9,7 @@ import { firebaseConnect } from 'react-redux-firebase';
 class ItemCard extends React.Component {
     moveUp = (e) =>{
         e.preventDefault();
+        if(this.props.item.id != 0){
         const{todoList, item} = this.props;
         const {firebase} = this.props;
         let listItems = todoList.items;
@@ -27,8 +28,10 @@ class ItemCard extends React.Component {
         this.props.changeName(this.props.todoList.id, firebase, this.props.todoList);
         this.forceUpdate();
     }
+    }
     moveDown = (e) =>{
         e.preventDefault();
+        if(this.props.item.id != (this.props.todoList.items.length-1)){
         const{todoList, item} = this.props;
         const {firebase} = this.props;
         let listItems = todoList.items;
@@ -46,6 +49,7 @@ class ItemCard extends React.Component {
         tempListItem.id = tempID;
         this.props.changeName(this.props.todoList.id, firebase, this.props.todoList);
         this.forceUpdate();
+        }
     }
     deleteItem = (e) =>{
         e.preventDefault();
@@ -81,7 +85,7 @@ class ItemCard extends React.Component {
                                 <p>Completed</p>
                             </div>
                             <div className="col s1 offset-2">
-                            <Button floating="true" fab={{direction: 'left'}} id="fab_up_down_delete" className="red" waves="light">
+                            <Button floating fab={{direction: 'left'}} id="fab_up_down_delete" className="red" waves="light">
                                     <Button icon={<Icon>arrow_upward</Icon>} onClick={this.moveUp}></Button>
                                     <Button icon={<Icon>arrow_downward</Icon>} onClick={this.moveDown}></Button>
                                     <Button icon={<Icon>delete</Icon>} onClick={this.deleteItem}></Button>

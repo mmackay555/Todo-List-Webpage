@@ -15,6 +15,10 @@ import ItemScreen from './components/item_screen/ItemScreen.js';
 import NewItemScreen from './components/item_screen/NewItemScreen.js';
 
 class App extends Component {
+  orderTimestamp(){
+    const {firebase} = this.props;
+    
+  }
   render() {
     const { auth } = this.props;
     

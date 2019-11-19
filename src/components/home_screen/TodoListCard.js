@@ -1,7 +1,10 @@
 import React from 'react';
+import { changeNameHandler } from '../../store/database/asynchHandler';
+import { firebaseConnect } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 class TodoListCard extends React.Component {
-
     render() {
         const { todoList } = this.props;
         console.log("TodoListCard, todoList.id: " + todoList.id);
@@ -14,4 +17,12 @@ class TodoListCard extends React.Component {
         );
     }
 }
-export default TodoListCard;
+const mapStateToProps = (state) =>{
+    return({
+        auth: state.firebase.auth,
+    }); 
+};
+const mapDispatchToProps = dispatch =>({
+    changeName: (id, firebase, todoList) => dispatch(changeNameHandler(id, firebase, todoList))
+});
+export default compose(connect(mapStateToProps, mapDispatchToProps), firebaseConnect())(TodoListCard);

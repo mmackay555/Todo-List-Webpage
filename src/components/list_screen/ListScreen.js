@@ -11,7 +11,8 @@ class ListScreen extends Component {
     state = {
         name: '',
         owner: '',
-        deleted: false
+        deleted: false,
+        changed: false
     }
 
     handleChange = (e) => {
@@ -38,11 +39,22 @@ class ListScreen extends Component {
             deleted: true,
         });
     }
+    updateListTimestamp = () =>{
+        const {firebase} = this.props;
+        const{todoList} = this.props;
+        this.props.changeName(todoList.id, firebase, todoList);
+    }
     render() {
         const auth = this.props.auth;
         const todoList = this.props.todoList;
         if (!auth.uid || this.state.deleted) {
             return <Redirect to="/" />;
+        }
+        if(!this.state.changed){
+            this.updateListTimestamp();
+            this.setState({
+                changed: true
+            });
         }
         return ( 
             <div className="container white">

@@ -1,5 +1,5 @@
 const initState = {
-    todoLists: []
+    todoLists: [],
 };
 
 const todoListReducer = (state = initState, action) => {
